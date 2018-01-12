@@ -139,6 +139,7 @@ for i in range(10):
     day_or_night = 'Day' if sun_angle > twilight else 'Night'
     print("Lat %s - Long %s" % (iss.sublat, iss.sublong))
     latlong = ("Lat %s - Long %s" % (iss.sublat, iss.sublong))
+    issHeight = ("ISS height %d" %iss.elevation)
     if day_or_night == 'Night':
         sense.show_message("It is night now Time: %s" %time)
     else:
@@ -148,8 +149,8 @@ for i in range(10):
 
         str_time = dt.datetime.now().strftime("%d/%m/%Y %H:%M:%S") # Gets the current date and time and arranges it into a redable format
 
-        text = latlong + " " + str_time
-        long.write(text + '\n') # Gets the lat and long of the ISS then saves that to a file with the time
+        text = latlong + " " + str_time + " " + issHeight 
+        long.write(text + '\n') # Gets the lat and long and height of the ISS then saves that to a file with the time
         camera.annotate_text = text # Add the date and time to the image
 
         camera.capture('/home/pi/AstroPi/ColourIndex(%d).jpg' %PhotoNumber) # Takes a picture and calls it ColourIndex + the n.o of photo
