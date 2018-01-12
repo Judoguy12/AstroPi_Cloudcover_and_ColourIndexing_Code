@@ -10,8 +10,8 @@ import math # Imports python's math library
 ## VARIABLES ##
 long = open("long", "w") # Opens a file to save the lat and long data to
 name = 'ISS (ZARYA)' # Iss Data             
-line1 = '1 25544U 98067A   17338.62918981  .00003071  00000-0  53716-4 0  9993'
-line2 = '2 25544  51.6428 268.6403 0003296 192.2093 183.7079 15.54077046 88261'
+line1 = '1 25544U 98067A   18011.65344505  .00003116  00000-0  53990-4 0  9994'
+line2 = '2 25544  51.6426  79.0696 0003478   2.6590 144.2138 15.54293905 94174'
 threshold =  600 # A set threshold for the RGB Value of White
 thresholdB = 100 # A set threshold for the RGB Value of Black
 sense = SenseHat() # Making sense hat's name shorter
