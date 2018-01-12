@@ -221,6 +221,6 @@ for i in range(10):
         
 
     PhotoNumber = PhotoNumber+1 # Adds one to the variable photo nmber
-    sleep(10) # Waits for 55 seconds
+    sleep(60) # Waits for 60 seconds
                    
 
