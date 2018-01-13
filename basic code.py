@@ -10,8 +10,8 @@ import math # Imports python's math library
 ## VARIABLES ##
 long = open("long", "w") # Opens a file to save the lat and long data to
 name = 'ISS (ZARYA)' # Iss Data             
-line1 = '1 25544U 98067A   17338.62918981  .00003071  00000-0  53716-4 0  9993'
-line2 = '2 25544  51.6428 268.6403 0003296 192.2093 183.7079 15.54077046 88261'
+line1 = '1 25544U 98067A   18011.65344505  .00003116  00000-0  53990-4 0  9994'
+line2 = '2 25544  51.6426  79.0696 0003478   2.6590 144.2138 15.54293905 94174'
 threshold =  600 # A set threshold for the RGB Value of White
 thresholdB = 100 # A set threshold for the RGB Value of Black
 sense = SenseHat() # Making sense hat's name shorter
@@ -139,6 +139,7 @@ for i in range(10):
     day_or_night = 'Day' if sun_angle > twilight else 'Night'
     print("Lat %s - Long %s" % (iss.sublat, iss.sublong))
     latlong = ("Lat %s - Long %s" % (iss.sublat, iss.sublong))
+    issHeight = ("ISS height %d" %iss.elevation)
     if day_or_night == 'Night':
         sense.show_message("It is night now Time: %s" %time)
     else:
@@ -148,8 +149,8 @@ for i in range(10):
 
         str_time = dt.datetime.now().strftime("%d/%m/%Y %H:%M:%S") # Gets the current date and time and arranges it into a redable format
 
-        text = latlong + " " + str_time
-        long.write(text + '\n') # Gets the lat and long of the ISS then saves that to a file with the time
+        text = latlong + " " + str_time + " " + issHeight 
+        long.write(text + '\n') # Gets the lat and long and height of the ISS then saves that to a file with the time
         camera.annotate_text = text # Add the date and time to the image
         camera.start_preview() 
         sleep(5)
@@ -222,6 +223,6 @@ for i in range(10):
         
 
     PhotoNumber = PhotoNumber+1 # Adds one to the variable photo nmber
-    sleep(10) # Waits for 55 seconds
+    sleep(60) # Waits for 60 seconds
                    
 
