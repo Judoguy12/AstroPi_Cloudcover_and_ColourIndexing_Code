@@ -7,8 +7,8 @@ import datetime as dt # Importing datetime module to give accurate date and time
 import ephem # Iss tracking library
 import math # Imports python's math library
 
+
 ## VARIABLES ##
-long = open("long.py", "w") # Opens a file to save the lat and long data to
 name = 'ISS (ZARYA)' # Iss Data             
 line1 = '1 25544U 98067A   18011.65344505  .00003116  00000-0  53990-4 0  9994'
 line2 = '2 25544  51.6426  79.0696 0003478   2.6590 144.2138 15.54293905 94174'
@@ -139,7 +139,10 @@ for i in range(10):
     day_or_night = 'Day' if sun_angle > twilight else 'Night'
     print("Lat %s - Long %s" % (iss.sublat, iss.sublong))
     latlong = ("Lat %s - Long %s" % (iss.sublat, iss.sublong))
-    issHeight = ("ISS height %d" %iss.elevation)
+    lat = iss.sublat
+    long = iss.sublong
+    issheight = ("ISS height %d" %iss.elevation)
+    ISSheight = iss.elevation
     if day_or_night == 'Night':
         sense.show_message("It is night now Time: %s" %time)
     else:
@@ -149,8 +152,9 @@ for i in range(10):
 
         str_time = dt.datetime.now().strftime("%d/%m/%Y %H:%M:%S") # Gets the current date and time and arranges it into a redable format
 
-        text = latlong + " " + str_time + " " + issHeight 
-        long.write(text + '\n') # Gets the lat and long and height of the ISS then saves that to a file with the time
+        text = latlong + " " + str_time + " " + issheight 
+        with open('long.txt', 'w') as f:
+            f.write('Lat %s - Long %s time %s ISS Height %s' %(lat, long, str_time, ISSheight))
         camera.annotate_text = text # Add the date and time to the image
         camera.start_preview() 
         sleep(5)
