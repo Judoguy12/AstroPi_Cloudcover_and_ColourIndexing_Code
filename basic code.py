@@ -151,12 +151,14 @@ for i in range(10):
         text = latlong + " " + str_time
         long.write(text + '\n') # Gets the lat and long of the ISS then saves that to a file with the time
         camera.annotate_text = text # Add the date and time to the image
-
+        camera.start_preview() 
+        sleep(5)
         camera.capture('/home/pi/AstroPi/ColourIndex(%d).jpg' %PhotoNumber) # Takes a picture and calls it ColourIndex + the n.o of photo
 
         camera.resolution = (50, 50) # Sets camera resolution to 50x50 pixels
-            
+        sleep(5)    
         camera.capture('/home/pi/AstroPi/CloudCover(%d).jpg' %PhotoNumber)# Takes a photo and calls it CloudCover then the n.o of photo
+        camera.stop_preview()
 
         sense.show_message("Picture Taken", text_colour = (0, 0, 255)) # Displays the message picture taken on the sense hats matrix
          
