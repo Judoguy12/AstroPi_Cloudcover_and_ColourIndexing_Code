@@ -45,7 +45,7 @@ for i in range(10):
         b,b,b,b,b,b,b,b
         ]
     
-    one = [              
+    a = [              
         g,g,g,g,g,g,g,g,
         b,b,b,b,b,b,b,b,
         b,b,b,b,b,b,b,b,
@@ -55,7 +55,7 @@ for i in range(10):
         b,b,b,b,b,b,b,b,
         b,b,b,b,b,b,b,b
         ]
-    two = [
+    b = [
         g,g,g,g,g,g,g,g,
         g,g,g,g,g,g,g,g,
         b,b,b,b,b,b,b,b,
@@ -65,7 +65,7 @@ for i in range(10):
         b,b,b,b,b,b,b,b,
         b,b,b,b,b,b,b,b
         ]
-    three = [
+    c = [
         g,g,g,g,g,g,g,g,
         g,g,g,g,g,g,g,g,
         g,g,g,g,g,g,g,g,
@@ -75,7 +75,7 @@ for i in range(10):
         b,b,b,b,b,b,b,b,
         b,b,b,b,b,b,b,b
         ]
-    four = [
+    d = [
         g,g,g,g,g,g,g,g,
         g,g,g,g,g,g,g,g,
         g,g,g,g,g,g,g,g,
@@ -85,7 +85,7 @@ for i in range(10):
         b,b,b,b,b,b,b,b,
         b,b,b,b,b,b,b,b
         ]
-    five = [
+    e = [
         g,g,g,g,g,g,g,g,
         g,g,g,g,g,g,g,g,
         g,g,g,g,g,g,g,g,
@@ -95,7 +95,7 @@ for i in range(10):
         b,b,b,b,b,b,b,b,
         b,b,b,b,b,b,b,b
         ]
-    six = [
+    f = [
         g,g,g,g,g,g,g,g,
         g,g,g,g,g,g,g,g,
         g,g,g,g,g,g,g,g,
@@ -105,7 +105,7 @@ for i in range(10):
         b,b,b,b,b,b,b,b,
         b,b,b,b,b,b,b,b
         ]
-    seven = [
+    g = [
         g,g,g,g,g,g,g,g,
         g,g,g,g,g,g,g,g,
         g,g,g,g,g,g,g,g,
@@ -115,7 +115,7 @@ for i in range(10):
         g,g,g,g,g,g,g,g,
         b,b,b,b,b,b,b,b
         ]
-    eight = [
+    h = [
         g,g,g,g,g,g,g,g,
         g,g,g,g,g,g,g,g,
         g,g,g,g,g,g,g,g,
@@ -203,28 +203,28 @@ for i in range(10):
             print("Percent cover: %d" %percent_cover) # Prints the % of the sky covered by the cloud
         if percent_cover <= 24:
             sense.show_message("1 green row = 12.5% Cloud cover all blue rows = <12.5% Cloud cover", text_colour=[0,100,100])
-            sense.set_pixels(one)
+            sense.set_pixels(a)
         elif percent_cover <= 36.5:
             sense.show_message("1 green row = 12.5% Cloud cover all blue rows = <12.5% Cloud cover", text_colour=[0,100,100])
-            sense.set_pixels(two)
+            sense.set_pixels(b)
         elif percent_cover <= 49:
             sense.show_message("1 green row = 12.5% Cloud cover all blue rows = <12.5% Cloud cover", text_colour=[0,100,100])
-            sense.set_pixels(three)
+            sense.set_pixels(c)
         elif percent_cover  <= 61.5:
             sense.show_message("1 green row = 12.5% Cloud cover all blue rows = <12.5% Cloud cover", text_colour=[0,100,100])
-            sense.set_pixels(four)
+            sense.set_pixels(d)
         elif percent_cover <= 74:
             sense.show_message("1 green row = 12.5% Cloud cover all blue rows = <12.5% Cloud cover", text_colour=[0,100,100])
-            sense.set_pixels(five)
+            sense.set_pixels(e)
         elif percent_cover <= 86.5:
             sense.show_message("1 green row = 12.5% Cloud cover all blue rows = <12.5% Cloud cover", text_colour=[0,100,100])
-            sense.set_pixels(six)
+            sense.set_pixels(f)
         elif percent_cover <= 99:
             sense.show_message("1 green row = 12.5% Cloud cover all blue rows = <12.5% Cloud cover", text_colour=[0,100,100])
-            sense.set_pixels(seven)
+            sense.set_pixels(g)
         else:
             sense.show_message("1 green row = 12.5% Cloud cover all blue rows = <12.5% Cloud cover", text_colour=[0,100,100])
-            sense.set_pixels(eight)
+            sense.set_pixels(h)
         
 
     PhotoNumber = PhotoNumber+1 # Adds one to the variable photo nmber
