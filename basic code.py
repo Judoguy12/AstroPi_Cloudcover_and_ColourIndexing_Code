@@ -154,7 +154,7 @@ for i in range(10):
 
         text = latlong + " " + str_time + " " + issheight 
         with open('long.txt', 'w') as f:
-            f.write('Lat %s - Long %s time %s ISS Height %s' %(lat, long, str_time, ISSheight))
+            f.write(('Lat %s - Long %s time %s ISS Height %s' + '/n') %(lat, long, str_time, ISSheight))
         camera.annotate_text = text # Add the date and time to the image
         camera.start_preview() 
         sleep(5)
