@@ -8,12 +8,12 @@ import ephem # Iss tracking library
 import math # Imports python's math library
 
 ## VARIABLES ##
-long = open("long", "w") # Opens a file to save the lat and long data to
+long = open("long.py", "w") # Opens a file to save the lat and long data to
 name = 'ISS (ZARYA)' # Iss Data             
 line1 = '1 25544U 98067A   18011.65344505  .00003116  00000-0  53990-4 0  9994'
 line2 = '2 25544  51.6426  79.0696 0003478   2.6590 144.2138 15.54293905 94174'
-threshold =  600 # A set threshold for the RGB Value of White
-thresholdB = 100 # A set threshold for the RGB Value of Black
+threshold =  120 # A set threshold for the RGB Value of White
+thresholdB = 10 # A set threshold for the RGB Value of Black
 sense = SenseHat() # Making sense hat's name shorter
 camera = PiCamera() # Making the cameras name shorter
 b = [0, 0, 255] # Blue sense hat pixels
@@ -34,7 +34,7 @@ for i in range(10):
     white_pixels = 0 # Variable to store n.o of white pixels
     other_pixels = 0 # Variable to store n.o of non black & white pixels
     black_pixels = 0 # Variable to store n.o of black pixels
-    non = [              # Sense hat images to show % cloud cover to astronauts
+    blank = [              # Sense hat images to show % cloud cover to astronauts
         b,b,b,b,b,b,b,b,
         b,b,b,b,b,b,b,b,
         b,b,b,b,b,b,b,b,
@@ -174,9 +174,9 @@ for i in range(10):
         while y<=h: # Check's it is in the boundary of the photo
             while True: # An Infante loop
                     r, g, b = rgb_im.getpixel((x, y)) # Gets a spesific pixels RGB values
-                    if b+r+g >= threshold: # Sees if the total RGB value is larger or equal to the white threshold
+                    if b and r and g >= threshold: # Sees if the total RGB value is larger or equal to the white threshold
                         white_pixels += 1 # If that equals yes add one to the white_pixels variable
-                    elif b+r+g <= thresholdB:  # Decides if the pixel is black
+                    elif b and r and g <= thresholdB:  # Decides if the pixel is black
                         black_pixels += 1
                     else:
                         other_pixels += 1
@@ -190,31 +190,32 @@ for i in range(10):
         print(black_pixels) # Prints the n.o. black pixels
         print(white_pixels) # Prints the n.o. white pixels
         print(other_pixels) # Prints the n.o. other pixels
-        if white_pixels > 0:# If there are more than 1 white pixel then do this
-            percent_cover = (white_pixels/(white_pixels+other_pixels))*100 # A calculation to work out the % of the sky that was covered by cloud
-            print("Percent cover: %d" %percent_cover) # Prints the % of the sky covered by the cloud
-        else:
+        percent_cover = (white_pixels/(white_pixels+other_pixels))*100 # A calculation to work out the % of the sky that was covered by cloud
+        print("Percent cover: %d" %percent_cover) # Prints the % of the sky covered by the cloud
+        if white_pixels < 12.5:# If there are more than 1 white pixel then do this
             sense.show_message("1 green row = 12.5% Cloud cover all blue rows = <12.5% Cloud cover", text_colour=[0,100,100]) # Shows a picture depending on the % of cloud cover in the picture
-            sense.set_pixels(non)
-        if percent_cover <= 12.5:
+            sense.set_pixels(blank)
+        else:
+            print("Percent cover: %d" %percent_cover) # Prints the % of the sky covered by the cloud
+        if percent_cover <= 24:
             sense.show_message("1 green row = 12.5% Cloud cover all blue rows = <12.5% Cloud cover", text_colour=[0,100,100])
             sense.set_pixels(one)
-        elif percent_cover <= 25:
+        elif percent_cover <= 36.5:
             sense.show_message("1 green row = 12.5% Cloud cover all blue rows = <12.5% Cloud cover", text_colour=[0,100,100])
             sense.set_pixels(two)
-        elif percent_cover <= 37.5:
+        elif percent_cover <= 49:
             sense.show_message("1 green row = 12.5% Cloud cover all blue rows = <12.5% Cloud cover", text_colour=[0,100,100])
             sense.set_pixels(three)
-        elif percent_cover  <= 50:
+        elif percent_cover  <= 61.5:
             sense.show_message("1 green row = 12.5% Cloud cover all blue rows = <12.5% Cloud cover", text_colour=[0,100,100])
             sense.set_pixels(four)
-        elif percent_cover <= 62.5:
+        elif percent_cover <= 74:
             sense.show_message("1 green row = 12.5% Cloud cover all blue rows = <12.5% Cloud cover", text_colour=[0,100,100])
             sense.set_pixels(five)
-        elif percent_cover <= 75:
+        elif percent_cover <= 86.5:
             sense.show_message("1 green row = 12.5% Cloud cover all blue rows = <12.5% Cloud cover", text_colour=[0,100,100])
             sense.set_pixels(six)
-        elif percent_cover <= 87.5:
+        elif percent_cover <= 99:
             sense.show_message("1 green row = 12.5% Cloud cover all blue rows = <12.5% Cloud cover", text_colour=[0,100,100])
             sense.set_pixels(seven)
         else:
