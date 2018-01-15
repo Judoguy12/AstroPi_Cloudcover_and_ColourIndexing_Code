@@ -16,8 +16,8 @@ threshold =  120 # A set threshold for the RGB Value of White
 thresholdB = 10 # A set threshold for the RGB Value of Black
 sense = SenseHat() # Making sense hat's name shorter
 camera = PiCamera() # Making the cameras name shorter
-b = [0, 0, 255] # Blue sense hat pixels
-g = [0, 255, 0] # Green pixels on sense hat
+X = [0, 0, 255] # Blue sense hat pixels
+O = [0, 255, 0] # Green pixels on sense hat
 PhotoNumber = 1 # Variable to store the n.o of the photo that has been taken
 iss = ephem.readtle(name, line1, line2) # Puts data to ephem
 sun = ephem.Sun() # Imports ephem's sun as sun
@@ -27,65 +27,65 @@ time = dt.datetime.now().strftime("%H:%M:%S") # Gets the current time and arrang
 
 for i in range(10):
     ## VARIABLES ##
-    w = 49 # Variable to store width of photo
-    h = 49 # Variable to store height of photo
+    w = 49.0 # Variable to store width of photo
+    height = 49.0 # Variable to store height of photo
     x = 1.0 # Variable to store X value
     y = 1.0 # Variable to store Y value
     white_pixels = 0 # Variable to store n.o of white pixels
     other_pixels = 0 # Variable to store n.o of non black & white pixels
     black_pixels = 0 # Variable to store n.o of black pixels
     blank = [              # Sense hat images to show % cloud cover to astronauts
-        b,b,b,b,b,b,b,b,
-        b,b,b,b,b,b,b,b,
-        b,b,b,b,b,b,b,b,
-        b,b,b,b,b,b,b,b,
-        b,b,b,b,b,b,b,b,
-        b,b,b,b,b,b,b,b,
-        b,b,b,b,b,b,b,b,
-        b,b,b,b,b,b,b,b
+        X,X,X,X,X,X,X,X,
+        X,X,X,X,X,X,X,X,
+        X,X,X,X,X,X,X,X,
+        X,X,X,X,X,X,X,X,
+        X,X,X,X,X,X,X,X,
+        X,X,X,X,X,X,X,X,
+        X,X,X,X,X,X,X,X,
+        X,X,X,X,X,X,X,X
         ]
     
-    a = [              
+    ONE = [              
+        O,O,O,O,O,O,O,O,
+        X,X,X,X,X,X,X,X,
+        X,X,X,X,X,X,X,X,
+        X,X,X,X,X,X,X,X,
+        X,X,X,X,X,X,X,X,
+        X,X,X,X,X,X,X,X,
+        X,X,X,X,X,X,X,X,
+        X,X,X,X,X,X,X,X
+        ]
+    TWO = [
+        O,O,O,O,O,O,O,O,
+        O,O,O,O,O,O,O,O,
+        X,X,X,X,X,X,X,X,
+        X,X,X,X,X,X,X,X,
+        X,X,X,X,X,X,X,X,
+        X,X,X,X,X,X,X,X,
+        X,X,X,X,X,X,X,X,
+        X,X,X,X,X,X,X,X
+        ]
+    THREE = [
+        O,O,O,O,O,O,O,O,
+        O,O,O,O,O,O,O,O,
+        O,O,O,O,O,O,O,O,
+        X,X,X,X,X,X,X,X,
+        X,X,X,X,X,X,X,X,
+        X,X,X,X,X,X,X,X,
+        X,X,X,X,X,X,X,X,
+        X,X,X,X,X,X,X,X
+        ]
+    FOUR = [
         g,g,g,g,g,g,g,g,
-        b,b,b,b,b,b,b,b,
-        b,b,b,b,b,b,b,b,
-        b,b,b,b,b,b,b,b,
+        g,g,g,g,g,g,g,g,
+        g,g,g,g,g,g,g,g,
+        g,g,g,g,g,g,g,g,
         b,b,b,b,b,b,b,b,
         b,b,b,b,b,b,b,b,
         b,b,b,b,b,b,b,b,
         b,b,b,b,b,b,b,b
         ]
-    b = [
-        g,g,g,g,g,g,g,g,
-        g,g,g,g,g,g,g,g,
-        b,b,b,b,b,b,b,b,
-        b,b,b,b,b,b,b,b,
-        b,b,b,b,b,b,b,b,
-        b,b,b,b,b,b,b,b,
-        b,b,b,b,b,b,b,b,
-        b,b,b,b,b,b,b,b
-        ]
-    c = [
-        g,g,g,g,g,g,g,g,
-        g,g,g,g,g,g,g,g,
-        g,g,g,g,g,g,g,g,
-        b,b,b,b,b,b,b,b,
-        b,b,b,b,b,b,b,b,
-        b,b,b,b,b,b,b,b,
-        b,b,b,b,b,b,b,b,
-        b,b,b,b,b,b,b,b
-        ]
-    d = [
-        g,g,g,g,g,g,g,g,
-        g,g,g,g,g,g,g,g,
-        g,g,g,g,g,g,g,g,
-        g,g,g,g,g,g,g,g,
-        b,b,b,b,b,b,b,b,
-        b,b,b,b,b,b,b,b,
-        b,b,b,b,b,b,b,b,
-        b,b,b,b,b,b,b,b
-        ]
-    e = [
+    FIVE = [
         g,g,g,g,g,g,g,g,
         g,g,g,g,g,g,g,g,
         g,g,g,g,g,g,g,g,
@@ -95,7 +95,7 @@ for i in range(10):
         b,b,b,b,b,b,b,b,
         b,b,b,b,b,b,b,b
         ]
-    f = [
+    SIX = [
         g,g,g,g,g,g,g,g,
         g,g,g,g,g,g,g,g,
         g,g,g,g,g,g,g,g,
@@ -105,7 +105,7 @@ for i in range(10):
         b,b,b,b,b,b,b,b,
         b,b,b,b,b,b,b,b
         ]
-    g = [
+    SEVEN = [
         g,g,g,g,g,g,g,g,
         g,g,g,g,g,g,g,g,
         g,g,g,g,g,g,g,g,
@@ -115,7 +115,7 @@ for i in range(10):
         g,g,g,g,g,g,g,g,
         b,b,b,b,b,b,b,b
         ]
-    h = [
+    EIGHT = [
         g,g,g,g,g,g,g,g,
         g,g,g,g,g,g,g,g,
         g,g,g,g,g,g,g,g,
@@ -158,6 +158,7 @@ for i in range(10):
         camera.annotate_text = text # Add the date and time to the image
         camera.start_preview() 
         sleep(5)
+        camera.resolution = (1920, 1080) # Sets camera resolution to 1920x1080 pixels(default)
         camera.capture('/home/pi/AstroPi/ColourIndex(%d).jpg' %PhotoNumber) # Takes a picture and calls it ColourIndex + the n.o of photo
 
         camera.resolution = (50, 50) # Sets camera resolution to 50x50 pixels
@@ -175,7 +176,7 @@ for i in range(10):
         rgb_im = im.convert('RGB') # Converts the image to RGB
 
 
-        while y<=h: # Check's it is in the boundary of the photo
+        while y <= height: # Check's it is in the boundary of the photo
             while True: # An Infante loop
                     r, g, b = rgb_im.getpixel((x, y)) # Gets a spesific pixels RGB values
                     if b and r and g >= threshold: # Sees if the total RGB value is larger or equal to the white threshold
@@ -197,37 +198,37 @@ for i in range(10):
         percent_cover = (white_pixels/(white_pixels+other_pixels))*100 # A calculation to work out the % of the sky that was covered by cloud
         print("Percent cover: %d" %percent_cover) # Prints the % of the sky covered by the cloud
         if white_pixels < 12.5:# If there are more than 1 white pixel then do this
-            sense.show_message("1 green row = 12.5% Cloud cover all blue rows = <12.5% Cloud cover", text_colour=[0,100,100]) # Shows a picture depending on the % of cloud cover in the picture
+            sense.show_message("1 row = 12.5% cloud cover green = cloud", text_colour=[0,100,100]) # Shows a picture depending on the % of cloud cover in the picture
             sense.set_pixels(blank)
         else:
             print("Percent cover: %d" %percent_cover) # Prints the % of the sky covered by the cloud
         if percent_cover <= 24:
-            sense.show_message("1 green row = 12.5% Cloud cover all blue rows = <12.5% Cloud cover", text_colour=[0,100,100])
-            sense.set_pixels(a)
+            sense.show_message("1 row = 12.5% cloud cover green = cloud", text_colour=[0,100,100])
+            sense.set_pixels(ONE)
         elif percent_cover <= 36.5:
-            sense.show_message("1 green row = 12.5% Cloud cover all blue rows = <12.5% Cloud cover", text_colour=[0,100,100])
-            sense.set_pixels(b)
+            sense.show_message("1 row = 12.5% cloud cover green = cloud", text_colour=[0,100,100])
+            sense.set_pixels(TWO)
         elif percent_cover <= 49:
-            sense.show_message("1 green row = 12.5% Cloud cover all blue rows = <12.5% Cloud cover", text_colour=[0,100,100])
-            sense.set_pixels(c)
+            sense.show_message("1 row = 12.5% cloud cover green = cloud", text_colour=[0,100,100])
+            sense.set_pixels(THREE)
         elif percent_cover  <= 61.5:
-            sense.show_message("1 green row = 12.5% Cloud cover all blue rows = <12.5% Cloud cover", text_colour=[0,100,100])
-            sense.set_pixels(d)
+            sense.show_message("1 row = 12.5% cloud cover green = cloud", text_colour=[0,100,100])
+            sense.set_pixels(FOUR)
         elif percent_cover <= 74:
-            sense.show_message("1 green row = 12.5% Cloud cover all blue rows = <12.5% Cloud cover", text_colour=[0,100,100])
-            sense.set_pixels(e)
+            sense.show_message("1 row = 12.5% cloud cover green = cloud", text_colour=[0,100,100])
+            sense.set_pixels(FIVE)
         elif percent_cover <= 86.5:
-            sense.show_message("1 green row = 12.5% Cloud cover all blue rows = <12.5% Cloud cover", text_colour=[0,100,100])
-            sense.set_pixels(f)
+            sense.show_message("1 row = 12.5% cloud cover green = cloud", text_colour=[0,100,100])
+            sense.set_pixels(SIX)
         elif percent_cover <= 99:
-            sense.show_message("1 green row = 12.5% Cloud cover all blue rows = <12.5% Cloud cover", text_colour=[0,100,100])
-            sense.set_pixels(g)
+            sense.show_message("1 row = 12.5% cloud cover green = cloud", text_colour=[0,100,100])
+            sense.set_pixels(SEVEN)
         else:
-            sense.show_message("1 green row = 12.5% Cloud cover all blue rows = <12.5% Cloud cover", text_colour=[0,100,100])
-            sense.set_pixels(h)
+            sense.show_message("1 row = 12.5% cloud cover green = cloud", text_colour=[0,100,100])
+            sense.set_pixels(EIGHT)
         
 
     PhotoNumber = PhotoNumber+1 # Adds one to the variable photo nmber
-    sleep(60) # Waits for 60 seconds
+    sleep(5) # Waits for 5 seconds before repeating
                    
 
