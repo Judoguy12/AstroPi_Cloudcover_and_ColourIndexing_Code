@@ -76,54 +76,54 @@ for i in range(10):
         X,X,X,X,X,X,X,X
         ]
     FOUR = [
-        g,g,g,g,g,g,g,g,
-        g,g,g,g,g,g,g,g,
-        g,g,g,g,g,g,g,g,
-        g,g,g,g,g,g,g,g,
-        b,b,b,b,b,b,b,b,
-        b,b,b,b,b,b,b,b,
-        b,b,b,b,b,b,b,b,
-        b,b,b,b,b,b,b,b
+        O,O,O,O,O,O,O,O,
+        O,O,O,O,O,O,O,O,
+        O,O,O,O,O,O,O,O,
+        O,O,O,O,O,O,O,O,
+        X,X,X,X,X,X,X,X,
+        X,X,X,X,X,X,X,X,
+        X,X,X,X,X,X,X,X,
+        X,X,X,X,X,X,X,X
         ]
     FIVE = [
-        g,g,g,g,g,g,g,g,
-        g,g,g,g,g,g,g,g,
-        g,g,g,g,g,g,g,g,
-        g,g,g,g,g,g,g,g,
-        g,g,g,g,g,g,g,g,
-        b,b,b,b,b,b,b,b,
-        b,b,b,b,b,b,b,b,
-        b,b,b,b,b,b,b,b
+       O,O,O,O,O,O,O,O,
+       O,O,O,O,O,O,O,O,
+       O,O,O,O,O,O,O,O,
+       O,O,O,O,O,O,O,O,
+       O,O,O,O,O,O,O,O,
+       X,X,X,X,X,X,X,X,
+       X,X,X,X,X,X,X,X,
+       X,X,X,X,X,X,X,X
         ]
     SIX = [
-        g,g,g,g,g,g,g,g,
-        g,g,g,g,g,g,g,g,
-        g,g,g,g,g,g,g,g,
-        g,g,g,g,g,g,g,g,
-        g,g,g,g,g,g,g,g,
-        g,g,g,g,g,g,g,g,
-        b,b,b,b,b,b,b,b,
-        b,b,b,b,b,b,b,b
+       O,O,O,O,O,O,O,O,
+       O,O,O,O,O,O,O,O,
+       O,O,O,O,O,O,O,O,
+       O,O,O,O,O,O,O,O,
+       O,O,O,O,O,O,O,O,
+       O,O,O,O,O,O,O,O,
+       X,X,X,X,X,X,X,X,
+       X,X,X,X,X,X,X,X
         ]
     SEVEN = [
-        g,g,g,g,g,g,g,g,
-        g,g,g,g,g,g,g,g,
-        g,g,g,g,g,g,g,g,
-        g,g,g,g,g,g,g,g,
-        g,g,g,g,g,g,g,g,
-        g,g,g,g,g,g,g,g,
-        g,g,g,g,g,g,g,g,
-        b,b,b,b,b,b,b,b
+       O,O,O,O,O,O,O,O,
+       O,O,O,O,O,O,O,O,
+       O,O,O,O,O,O,O,O,
+       O,O,O,O,O,O,O,O,
+       O,O,O,O,O,O,O,O,
+       O,O,O,O,O,O,O,O,
+       O,O,O,O,O,O,O,O,
+       X,X,X,X,X,X,X,X
         ]
     EIGHT = [
-        g,g,g,g,g,g,g,g,
-        g,g,g,g,g,g,g,g,
-        g,g,g,g,g,g,g,g,
-        g,g,g,g,g,g,g,g,
-        g,g,g,g,g,g,g,g,
-        g,g,g,g,g,g,g,g,
-        g,g,g,g,g,g,g,g,
-        g,g,g,g,g,g,g,g
+       O,O,O,O,O,O,O,O,
+       O,O,O,O,O,O,O,O,
+       O,O,O,O,O,O,O,O,
+       O,O,O,O,O,O,O,O,
+       O,O,O,O,O,O,O,O,
+       O,O,O,O,O,O,O,O,
+       O,O,O,O,O,O,O,O,
+       O,O,O,O,O,O,O,O
         ]
     ## TRACKING ISS ###
     
